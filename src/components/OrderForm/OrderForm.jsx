@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../../styles/Item.css'
 
 const OrderForm = ({ onCreate }) => {
     const [buyer, setBuyer] = useState({
@@ -20,7 +21,7 @@ const OrderForm = ({ onCreate }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="formulario">
             <input
                 type="text"
                 name="name"
