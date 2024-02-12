@@ -1,9 +1,9 @@
 import { useState } from "react"
 import { collection, getDocs, where, query, documentId, writeBatch, addDoc } from "firebase/firestore"
 import { useCart } from "../../context/CartContext"
-// import OrderForm from '../OrderForm/OrderForm'
 import { db } from "../../services/firebase/firebaseConfig"
 import { useNotification } from "../../notification/NotificationService"
+import OrderForm from "../OrderForm/OrderForm"
 
 const Checkout = () => {
     const [loading, setLoading] = useState(false)
@@ -15,13 +15,9 @@ const Checkout = () => {
         setLoading(true)
         try {
             const objOrder = {
-                buyer: { 
-                    name: 'Andree Flaniguen',
-                    email: 'andree@uru.uy',
-                    phone: '123456'
-                },//userData,
+                buyer: userData,
                 items: cart,
-                total 
+                total
             }
     
             const batch = writeBatch(db)
@@ -79,8 +75,8 @@ const Checkout = () => {
     return (
         <>
             <h1>CHECKOUT</h1>
-            {/* <OrderForm onCreate={createOrder}/> */}
-            <button onClick={createOrder}>Generar orden</button>
+            <OrderForm onCreate={createOrder}/>
+            {/* <button onClick={createOrder}>Generar orden</button> */}
         </>
     )
 }
